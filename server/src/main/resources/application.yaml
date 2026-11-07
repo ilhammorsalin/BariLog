@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: barilog
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
+    username: sa
+    password: ""
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+logging:
+  pattern:
+    console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr([%thread]){faint} %clr(%logger{36}){cyan} - %msg%n%wEx"
+  file:
+    name: ${LOG_FILE:logs/barilog.json}
+  structured:
+    format:
+      file: logstash
+  logback:
+    rollingpolicy:
+      max-file-size: 10MB
+      max-history: 7
+      total-size-cap: 100MB
